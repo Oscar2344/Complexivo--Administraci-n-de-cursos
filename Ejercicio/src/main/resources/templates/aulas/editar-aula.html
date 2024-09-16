@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Aula</title>
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+<body>
+    <h1>Editar Aula</h1>
+
+    <form th:action="@{/aulas/editar/{id}(id=${aula.id})}" method="post">
+        <label for="numeroDeAula">Número de Aula:</label>
+        <input type="number" id="numeroDeAula" name="numeroDeAula" th:value="${aula.numeroDeAula}" required>
+        <br>
+
+        <label for="capacidad">Capacidad:</label>
+        <input type="number" id="capacidad" name="capacidad" th:value="${aula.capacidad}" required>
+        <br>
+
+        <label for="tieneProyector">¿Tiene Proyector?:</label>
+        <input type="checkbox" id="tieneProyector" name="tieneProyector" th:checked="${aula.tieneProyector}">
+        <br>
+
+        <label for="esAulaVirtual">¿Es Aula Virtual?:</label>
+        <input type="checkbox" id="esAulaVirtual" name="esAulaVirtual" th:checked="${aula.esAulaVirtual}">
+        <br>
+
+        <label for="cantidadDeSillas">Cantidad de Sillas:</label>
+        <input type="number" id="cantidadDeSillas" name="cantidadDeSillas" th:value="${aula.cantidadDeSillas}" required>
+        <br>
+
+        <label for="horarioDisponible">Horario Disponible:</label>
+        <input type="text" id="horarioDisponible" name="horarioDisponible" th:value="${aula.horarioDisponible}" required>
+        <br>
+
+        <label for="curso">Curso:</label>
+        <select id="curso" name="curso.id" required>
+            <option th:each="curso : ${cursos}" 
+                    th:value="${curso.id}" 
+                    th:text="${curso.nombreCurso}" 
+                    th:selected="${aula.curso != null and curso.id == aula.curso.id}">
+            </option>
+        </select>
+        
+        <br>
+
+        <button type="submit">Editar</button>
+    </form>
+</body>
+</html>

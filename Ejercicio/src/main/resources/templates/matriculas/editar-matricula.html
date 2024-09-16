@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Matrícula</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+</head>
+<body>
+    <h1>Editar Matrícula</h1>
+    <form th:action="@{/matriculas/editar/{id}(id=${matricula.id})}" method="post">
+        <label for="fechaInscripcion">Fecha de Inscripción:</label>
+        <input type="date" id="fechaInscripcion" name="fechaInscripcion" th:value="${matricula.fechaInscripcion}" required>
+        <br>
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" th:value="${matricula.estado}" required>
+        <br>
+        <label for="calificacion">Calificación:</label>
+        <input type="number" id="calificacion" name="calificacion" th:value="${matricula.calificacion}" min="0" max="100" required>
+        <br>
+        <label for="fechaCompletado">Fecha Completado:</label>
+        <input type="date" id="fechaCompletado" name="fechaCompletado" th:value="${matricula.fechaCompletado}">
+        <br>
+        <label for="estudiante">Estudiante:</label>
+        <select id="estudiante" name="estudiante.id" required>
+            <option th:each="estudiante : ${estudiantes}" th:value="${estudiante.id}" th:text="${estudiante.nombre}" th:selected="${matricula.estudiante != null && matricula.estudiante.id == estudiante.id}"></option>
+        </select>
+        <br>
+        <label for="curso">Curso:</label>
+        <select id="curso" name="curso.id" required>
+            <option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.nombreCurso}" th:selected="${matricula.curso != null && matricula.curso.id == curso.id}"></option>
+        </select>
+        <br>
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>

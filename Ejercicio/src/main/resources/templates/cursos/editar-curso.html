@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Curso</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+</head>
+<body>
+    <h1>Editar Curso</h1>
+    <form th:action="@{/cursos/editar/{id}(id=${curso.id})}" method="post">
+        <label for="nombreCurso">Nombre del Curso:</label>
+        <input type="text" id="nombreCurso" name="nombreCurso" th:value="${curso.nombreCurso}" required>
+        <br>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" th:value="${curso.descripcion}" required>
+        <br>
+        <label for="nivel">Nivel:</label>
+        <input type="text" id="nivel" name="nivel" th:value="${curso.nivel}" required>
+        <br>
+        <label for="modalidad">Modalidad:</label>
+        <input type="text" id="modalidad" name="modalidad" th:value="${curso.modalidad}" required>
+        <br>
+        <label for="profesor">Profesor:</label>
+        <select id="profesor" name="profesor.id" required>
+            <option th:each="profesor : ${profesores}" 
+                    th:value="${profesor.id}" 
+                    th:text="${profesor.nombre}"
+                    th:selected="${curso.profesor != null && curso.profesor.id == profesor.id}"></option>
+        </select>
+        <br>
+        <button type="submit">Editar</button>
+    </form>
+</body>
+</html>

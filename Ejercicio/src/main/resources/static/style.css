@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+    border-collapse: collapse;   
+}
+body {
+    background-color: #1a1a1a; 
+    color: white;
+    font-family: Arial, sans-serif;
+}
+th, td {
+    border: 1px solid  #4CAF50; 
+    padding: 10px;
+    text-align: left;
+}
+.btn-agregar {
+    background-color: #4CAF50; 
+    color: white;              
+    padding: 15px 20px;      
+    text-align: center;        
+    text-decoration: none;     
+    display: inline-block;     
+    font-size: 16px;          
+    border-radius: 23px;       
+    margin-top: 20px; 
+}
+.btn-regresar {
+    font-size: 18px; 
+    color: #ffffff; 
+    background-color: #4CAF50; 
+    padding: 10px 20px; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    display: inline-block;
+    margin-top: 20px; 
+}
+.btn-regresar:hover {
+    background-color: #45a049;
+}

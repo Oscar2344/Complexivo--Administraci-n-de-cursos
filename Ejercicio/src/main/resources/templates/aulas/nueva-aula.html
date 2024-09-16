@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Aula</title>
+</head>
+<link rel="stylesheet" type="text/css" th:href="@{/main.css}">
+<body>
+    <h1>Nueva Aula</h1>
+
+    <form th:action="@{/aulas/nuevo}" method="post">
+        <label for="numeroDeAula">Número de Aula:</label>
+        <input type="number" id="numeroDeAula" name="numeroDeAula" required>
+        <br>
+
+        <label for="capacidad">Capacidad:</label>
+        <input type="number" id="capacidad" name="capacidad" required>
+        <br>
+
+        <label for="tieneProyector">¿Tiene Proyector?:</label>
+        <input type="checkbox" id="tieneProyector" name="tieneProyector">
+        <br>
+
+        <label for="esAulaVirtual">¿Es Aula Virtual?:</label>
+        <input type="checkbox" id="esAulaVirtual" name="esAulaVirtual">
+        <br>
+
+        <label for="cantidadDeSillas">Cantidad de Sillas:</label>
+        <input type="number" id="cantidadDeSillas" name="cantidadDeSillas" required>
+        <br>
+
+        <label for="horarioDisponible">Horario Disponible:</label>
+        <input type="text" id="horarioDisponible" name="horarioDisponible" required>
+        <br>
+
+        <label for="curso">Curso:</label>
+        <select id="curso" name="curso.id" required>
+            <option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.nombreCurso}"></option>
+        </select>
+        <br>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

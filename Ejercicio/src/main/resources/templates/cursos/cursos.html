@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Cursos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cursos</h1>
+    <form action="/cursos" method="get" style="margin-bottom: 20px;">
+        <input type="text" name="nombreCurso" placeholder="Buscar por nombre del curso" />
+        <button type="submit">Buscar</button>
+        <a th:href="@{/cursos}" class="btn-limpiar">
+            <button type="button">Deshacer búsqueda</button>
+        </a>
+    </form>
+    
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Curso</th>
+                <th>Descripción</th>
+                <th>Nivel</th>
+                <th>Modalidad</th>
+                <th>Profesor</th> 
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="curso : ${cursos}">
+                <td th:text="${curso.id}"></td>
+                <td th:text="${curso.nombreCurso}"></td>
+                <td th:text="${curso.descripcion}"></td>
+                <td th:text="${curso.nivel}"></td>
+                <td th:text="${curso.modalidad}"></td>
+                <td th:text="${curso.profesor != null ? curso.profesor.nombre : 'No asignado'}"></td>
+                <td>
+                    <form th:action="@{/cursos/editar/{id}(id=${curso.id})}" method="get" style="display:inline;">
+                        <button type="submit">Editar</button>
+                    </form>
+                    <form th:action="@{/cursos/eliminar/{id}(id=${curso.id})}" method="post" style="display:inline;">
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div style="margin-top: 20px;">
+        <a th:href="@{/cursos/nuevo}" class="btn-agregar">Agregar Curso</a>
+        <a href="/">
+            <button type="button" class="btn-agregar">Volver</button>
+        </a>
+    </div>
+</body>
+</html>

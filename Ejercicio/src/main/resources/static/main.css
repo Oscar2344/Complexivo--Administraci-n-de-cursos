@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #1a1a1a; 
+    color: white;
+}
+h1 {
+    color: white;
+}
+form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+label {
+    margin-top: 10px;
+    display: block;
+}
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+button {
+    margin-top: 20px;
+    padding: 8px 16px;
+}
+/* Estilo para los elementos select */
+.styled-select {
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+    /* Opcional: agregar una sombra */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Opcional: agregar una transición suave */
+    transition: border-color 0.3s ease;
+}
+
+.styled-select:focus {
+    border-color: #007bff; /* Cambia el color del borde al enfocar */
+    outline: none; /* Elimina el borde por defecto del navegador */
+}
+
+/* Estilo para las opciones del select */
+.styled-select option {
+    padding: 10px;
+}
